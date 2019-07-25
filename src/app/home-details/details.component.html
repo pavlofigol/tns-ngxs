@@ -1,0 +1,14 @@
+<ActionBar title="Sessions List" class="action-bar">
+</ActionBar>
+
+<GridLayout rows="*, auto" columns="*">
+
+    <ScrollView row="0">
+        <StackLayout>
+            <Label *ngFor="let session of sessions" [text]="session.name" margin="20"></Label>
+
+        </StackLayout>
+    </ScrollView>
+
+    <Label width="100%" row="1" textAlignment="center" height="70" backgroundColor="#9a9a9a" color="white" horizontalAlignment="center" text="Open Filter" (tap)="openFilter()" textWrap="true"></Label>
+</GridLayout>
