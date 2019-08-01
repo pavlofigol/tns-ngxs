@@ -3,6 +3,9 @@ import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
+import { NgxsModule } from '@ngxs/store';
+import { SessionsState } from "./states/sessions.state";
+
 
 @NgModule({
     bootstrap: [
@@ -10,7 +13,10 @@ import { AppComponent } from "./app.component";
     ],
     imports: [
         NativeScriptModule,
-        AppRoutingModule
+        AppRoutingModule,
+        NgxsModule.forRoot([
+            SessionsState
+        ])
     ],
     declarations: [
         AppComponent

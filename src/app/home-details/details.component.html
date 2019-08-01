@@ -5,7 +5,7 @@
 
     <ScrollView row="0">
         <StackLayout>
-            <Label *ngFor="let session of sessions" [text]="session.name" margin="20"></Label>
+            <Label *ngFor="let session of sessions$ | async" [text]="session.name" margin="20"></Label>
 
         </StackLayout>
     </ScrollView>

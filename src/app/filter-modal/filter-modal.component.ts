@@ -14,6 +14,8 @@ import { ActivatedRoute } from '@angular/router';
 
 import { GridLayout } from 'tns-core-modules/ui/layouts/grid-layout/grid-layout';
 import { ModalDialogParams } from 'nativescript-angular/modal-dialog';
+import { Store } from '@ngxs/store';
+import { ChangeMaxPrice } from '../states/sessions.state';
 
 
 @Component({
@@ -28,7 +30,8 @@ export class FilterModalComponent implements OnInit {
     private routerExtensions: RouterExtensions,
     private page: Page,
     private route: ActivatedRoute,
-    private params: ModalDialogParams
+    private params: ModalDialogParams,
+    private store: Store
   ) {
 
   }
@@ -36,6 +39,7 @@ export class FilterModalComponent implements OnInit {
   ngOnInit() { }
 
   close(maxPrice: number): void {
+    this.store.dispatch(new ChangeMaxPrice(maxPrice));
     this.params.closeCallback(maxPrice);
   }
 

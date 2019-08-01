@@ -1,4 +1,7 @@
 import { Component, OnInit } from "@angular/core";
+import { Store, Select } from "@ngxs/store";
+import { Observable } from "rxjs";
+import { SessionsState } from "../states/sessions.state";
 
 @Component({
     selector: "Home",
@@ -7,10 +10,11 @@ import { Component, OnInit } from "@angular/core";
 })
 export class HomeComponent implements OnInit {
 
-    maxPrice: number = 300;
 
-    constructor() {
-        // Use the component constructor to inject providers.
+    @Select(SessionsState.getMaxPrice) maxPrice$: Observable<number>;
+
+    constructor(private store: Store) {
+
     }
 
     ngOnInit(): void {

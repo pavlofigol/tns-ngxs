@@ -5,13 +5,11 @@ import {
     ModalDialogOptions
 } from 'nativescript-angular/modal-dialog';
 import { FilterModalComponent } from '../filter-modal/filter-modal.component';
+import { Select } from '@ngxs/store';
+import { SessionsState, Session } from '../states/sessions.state';
+import { Observable } from 'rxjs';
 
 
-export interface Session {
-    name: string,
-    price: number
-
-}
 
 @Component({
     moduleId: module.id,
@@ -20,38 +18,7 @@ export interface Session {
 })
 export class DetailsComponent implements OnInit {
 
-
-
-    sessions: Session[] = [
-        {
-            name: 'Session for 10 euros',
-            price: 10
-        },
-        {
-            name: 'Session for 15 euros',
-            price: 15
-        },
-        {
-            name: 'Session for 20 euros',
-            price: 20
-        },
-        {
-            name: 'Session for 25 euros',
-            price: 25
-        },
-        {
-            name: 'Session for 50 euros',
-            price: 50
-        },
-        {
-            name: 'Session for 10 euros',
-            price: 10
-        },
-    ];
-
-
-
-
+    @Select(SessionsState.getSessions) sessions$: Observable<Session>;
 
 
     constructor(private _modalService: ModalDialogService,
